@@ -18,13 +18,16 @@ public class CurrencyService {
 
     private String apiKey = "24f5a1263171e37321d1f133";
 
+    public CurrencyService(CurrencyExchangeClient client, DiscountService discountService) {
+    }
+
     public double calculateFinalAmount(Bill bill) {
-            System.out.println("runnnnnnn................................");
+            //System.out.println("runnnnnnn................................");
         double discountedAmount = discountService.applyDiscounts(bill);
 
     
         Map<String, Object> exchangeRates = currencyExchangeClient.getExchangeRates(bill.getOriginalCurrency(), apiKey);
-        @SuppressWarnings("unchecked")
+        //@SuppressWarnings("unchecked")
         Map<String, Double> rates = (Map<String, Double>) exchangeRates.get("rates");
         double conversionRate = rates.get(bill.getTargetCurrency());
 
