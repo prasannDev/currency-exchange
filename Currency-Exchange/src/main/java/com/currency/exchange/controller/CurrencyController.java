@@ -16,8 +16,7 @@ public class CurrencyController {
     private CurrencyService currencyService;
 
     @PostMapping("/calculate")
-    public ResponseEntity<Double> calculatePayableAmount(@RequestBody Bill bill) {
-        System.out.println("runnnniiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+        public ResponseEntity<Double> calculatePayableAmount(@RequestBody Bill bill) {
         double finalAmount = currencyService.calculateFinalAmount(bill);
         return ResponseEntity.ok(finalAmount);
     }
