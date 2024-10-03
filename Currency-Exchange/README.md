@@ -82,6 +82,10 @@ Choose Basic Auth.
 Enter the username and password.
 Username: admin
 Password: admin123
+uml digram :
+![1A80072A-D848-4307-B4C5-A8C11E43F020](https://github.com/user-attachments/assets/6ba966d8-adb8-4517-90b9-80528c87fd29)
+
+
 
 # Conclusion
 By following these steps, you will be able to run the Currency Exchange application, generate JAR files, 
