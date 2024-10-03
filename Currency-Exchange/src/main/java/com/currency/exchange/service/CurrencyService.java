@@ -23,16 +23,22 @@ public class CurrencyService {
     @Autowired
     ExchangeRepository exchangeRepository;
     public CurrencyService(CurrencyExchangeClient client, DiscountService discountService) {
+        this.currencyExchangeClient = client;
+        this.discountService = discountService;
     }
+
+
 
     public double calculateFinalAmount(Bill bill) {
         double discountedAmount = discountService.applyDiscounts(bill);
 
-        exchangeRepository.save(bill);
+        //exchangeRepository.save(bill);
 
         Map<String, Object> exchangeRates = currencyExchangeClient.getExchangeRates(bill.getOriginalCurrency(), apiKey);
         //@SuppressWarnings("unchecked")
+
         Map<String, Double> rates = (Map<String, Double>) exchangeRates.get("rates");
+
         double conversionRate = rates.get(bill.getTargetCurrency());
 
         return discountedAmount * conversionRate;
