@@ -1,3 +1,25 @@
+# Currency Exchange Application
+
+This Spring Boot application calculates the total payable amount for a bill 
+in a specified currency after applying applicable discounts and converting 
+to a different currency.
+
+## Prerequisites
+
+- Java 17 (or compatible version)
+- Maven or Gradle
+- Internet connection for third-party API calls
+
+## Building the Project
+
+### Using Maven
+
+To build the project and create a JAR file, run the following command:
+
+bash
+mvn clean package
+
+#
 -test API using POST method in postman 
 -http://localhost:8080/api/calculate
 -used below JSON body in row as request 
