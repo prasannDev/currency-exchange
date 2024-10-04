@@ -58,7 +58,7 @@ src/
 - `client/`: Defines the Feign client in `CurrencyExchangeClient.java` to interact with the third-party currency exchange API.
 - `config/`: Contains Feign client configurations and other beans in `FeignConfig.java`.
 - `exception/`: Handles custom exceptions defined in `CustomException.java`.
-- `repository/`: Manages data storage and retrieval in `CurrencyRepository.java`.
+- `repository/`: Manages data storage and retrieval in `ExchangeRepository.java`.
 - `resources/`: Contains configuration files such as `application.properties`.
 
 ---
