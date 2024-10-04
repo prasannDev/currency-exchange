@@ -7,14 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Value;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+
 
 class CurrencyServiceTest {
     @Value("${currency.api.key}")
@@ -41,6 +38,7 @@ class CurrencyServiceTest {
         listItems.add("TV");
         Bill bill = new Bill();
         bill.setId(1L);
+        bill.setCustomerTenure(3);
         bill.setItems(listItems);
         bill.setTotalAmount(100);
         bill.setCategories(listCategories);
@@ -48,10 +46,6 @@ class CurrencyServiceTest {
         bill.setTargetCurrency("INR");
         bill.setOriginalCurrency("USD");
 
-        Map<String, Object> ratesResponse = new HashMap<>();
-        Map<String, Double> rates = new HashMap<>();
-        rates.put("EUR", 0.85);
-        ratesResponse.put("rates", rates);
 
        Mockito.when(client.getExchangeRates("USD", apiKey)).thenReturn(Map.of("rates", Map.of("INR", 0.85)));
 
