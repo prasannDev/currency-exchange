@@ -1,3 +1,5 @@
+---
+
 # Currency Exchange and Discount Calculation Application
 
 This Spring Boot application calculates the total payable amount for a bill in a specified currency after applying applicable discounts and converting the amount to a different currency.
@@ -93,33 +95,42 @@ Ensure Lombok is properly configured in your IDE to avoid build-time issues.
 
 ---
 
-## 3. Build the Project
+## 3. Steps to Create a JAR File Using Maven in IntelliJ IDEA
 
-### Using Maven:
+### Open Your Project in IntelliJ IDEA:
+1. Launch **IntelliJ IDEA**.
+2. Open the Maven project by navigating to `File > Open` and selecting the folder that contains your `pom.xml` file.
 
-To build the project and create a JAR file, run the following command:
+### Ensure Maven is Configured:
+1. In the right-hand side **Maven** tool window, you should see the Maven project structure. If the window is not visible, open it by going to `View > Tool Windows > Maven`.
+2. Verify that Maven is configured correctly by checking the `pom.xml` file.
+
+### Clean and Build the Project:
+1. In the Maven tool window, expand your project structure to show lifecycle phases.
+2. Navigate to `Lifecycle > clean`. Double-click `clean` to remove previous build artifacts.
+3. Next, double-click `install` (found under Lifecycle) to compile the project, run tests, and create a JAR file.
+4. Alternatively, you can run the following command directly from the terminal within IntelliJ:
 
 ```bash
-mvn clean package
+mvn clean install
 ```
 
-This will generate the JAR file in the `target` directory.
+### Locate the Generated JAR File:
+- After the build process completes, the JAR file will be located in the `target` directory inside your project folder.
+- Right-click the project folder and select `Show in Explorer` (on Windows) or `Reveal in Finder` (on macOS) to quickly access the directory.
 
-### Using Gradle:
-
-If you prefer using Gradle, run the following command:
+### (Optional) Skip Tests During Build:
+If you want to skip the tests during the build, use the following Maven command:
 
 ```bash
-./gradlew bootJar
+mvn clean install -DskipTests
 ```
-
-This will generate the JAR file in the `build/libs` directory.
 
 ---
 
 ## 4. Running the Application
 
-After building the JAR file, run the application with the following command:
+Once the project is set up and configured, you can run the Spring Boot application directly from your IDE (e.g., IntelliJ, Eclipse) or build a JAR file and run it using:
 
 ```bash
 java -jar target/currency-exchange-1.0.0.jar
@@ -171,17 +182,6 @@ The API is protected by Basic Authentication. To test in Postman:
 
 ---
 
-## Conclusion
-
-By following the steps provided in this `README.md`, you can:
-
-- Set up the project.
-- Build the JAR file.
-- Run the application.
-- Test the APIs using Postman with proper authentication.
-
----
-
 ## Test Report
 
 | Test Case               | Description                                          | Expected Outcome     | Actual Outcome        | Status |
@@ -189,3 +189,18 @@ By following the steps provided in this `README.md`, you can:
 | `calculateFinalAmount()` | Verifies discount application and currency conversion | Final amount = ₹59.5 | Final amount = ₹59.5  | Pass   |
 
 ---
+
+## Conclusion
+
+By following the steps provided in this `README.md`, you can:
+
+- Set up the project.
+- Create a JAR file using Maven.
+- Run the application.
+- Test the APIs using Postman with proper authentication.
+
+---
+
+This `README.md` provides all the necessary instructions to set up, run, and test the Currency Exchange and Discount Calculation application.
+
+--- 
