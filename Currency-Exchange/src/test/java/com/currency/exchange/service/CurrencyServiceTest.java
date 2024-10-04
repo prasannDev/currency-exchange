@@ -3,6 +3,7 @@ package com.currency.exchange.service;
 import com.currency.exchange.client.CurrencyExchangeClient;
 import com.currency.exchange.model.Bill;
 import com.currency.exchange.model.UserType;
+import com.currency.exchange.repository.ExchangeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -19,19 +20,19 @@ class CurrencyServiceTest {
     private CurrencyExchangeClient client;  // Declare client mock
     private DiscountService discountService;  // Declare discount service mock
     private CurrencyService currencyService;  // Declare the service being tested
-
+    private ExchangeRepository exchangeRepository;
     @BeforeEach
     void setUp() {
         client = Mockito.mock(CurrencyExchangeClient.class);  // Mock client
         discountService = Mockito.mock(DiscountService.class);  // Mock discount service
-        currencyService = new CurrencyService(client, discountService);  // Inject mocks into the service
+        exchangeRepository = Mockito.mock(ExchangeRepository.class);  // Mock discount service
+        currencyService = new CurrencyService(client, discountService,exchangeRepository);  // Inject mocks into the service
     }
 
 
 
     @Test
     void calculateFinalAmount() {
-        // Setup: Creating a bill for an employee with USD to EUR conversion
         List<String> listCategories=new ArrayList<>();
         List<String> listItems=new ArrayList<>();
         listCategories.add("ELECTRONICS");
@@ -57,25 +58,3 @@ class CurrencyServiceTest {
     }
 
 }
-
-
-/**
- * Test Report
- *
- *
- Test Case              | Description	                                        |Expected Outcome	    |Actual Outcome	        |Status
- calculateFinalAmount()	| Verifies discount application and currency conversion	|Final amount = ₹59.5	|Final amount = ₹59.5	|Pass
- ..................................
- sampling ...
- include patterns:
- com\.currency\.exchange\.service\..*
- exclude patterns:
- rate== {INR=0.85}
- rate== INR
- Class transformation time: 0.03921621s for 2774 classes or 1.4137062004325884E-5s per class
-
- Process finished with exit code 0
-
-
-
- */

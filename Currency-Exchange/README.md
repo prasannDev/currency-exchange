@@ -21,6 +21,7 @@ This Spring Boot application calculates the total payable amount for a bill in a
 - Real-time exchange rate retrieval using a third-party currency exchange API.
 - Apply discounts based on user type (e.g., employee, affiliate) and bill amount.
 - REST API to submit bills and calculate the payable amount in the target currency after discounts and currency conversion.
+- Store bill data in an H2 in-memory database.
 
 ---
 
@@ -79,7 +80,7 @@ cd currency-exchange
 
 ### A. `application.properties` Configuration:
 
-Update the `application.properties` file with your API key for the currency exchange service.
+Update the `application.properties` file with your API key for the currency exchange service and configure H2 database settings.
 
 ```properties
 # Third-party API key configuration
@@ -87,6 +88,13 @@ currency.api.key=your-api-key-here
 
 # Server port configuration (optional)
 server.port=8080
+
+# H2 Database
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:test
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create-drop
 ```
 
 ### B. Lombok Configuration:
@@ -138,6 +146,8 @@ java -jar target/currency-exchange-1.0.0.jar
 
 The application will start on `http://localhost:8080` (or the port specified in `application.properties`).
 
+You can access the H2 database console by visiting `http://localhost:8080/h2-console`.
+
 ---
 
 ## 5. Testing the Application Using Postman
@@ -160,7 +170,7 @@ Example request body (JSON):
 }
 ```
 
-This request will return the payable amount in the specified target currency after applying discounts and currency conversion.
+This request will return the payable amount in the specified target currency after applying discounts and currency conversion. The bill data will be stored in the H2 database.
 
 ---
 
@@ -198,9 +208,10 @@ By following the steps provided in this `README.md`, you can:
 - Create a JAR file using Maven.
 - Run the application.
 - Test the APIs using Postman with proper authentication.
+- Store bill data in an H2 database and access it via the H2 console.
 
 ---
 
-This `README.md` provides all the necessary instructions to set up, run, and test the Currency Exchange and Discount Calculation application.
+This `README.md` provides all the necessary instructions to set up, run, and test the Currency Exchange and Discount Calculation application, including storing bill data in an H2 database.
 
 --- 
